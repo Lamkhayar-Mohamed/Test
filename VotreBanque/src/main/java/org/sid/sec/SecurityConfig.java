@@ -16,23 +16,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-	private DataSource dataSource;
-	@Bean
+	/*private DataSource dataSource;*/
+	/*@Bean
 	 public PasswordEncoder passwordEncoder() {
 		  return new BCryptPasswordEncoder();
-	 }
+	 }*/
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		/*
+		
 		auth.inMemoryAuthentication()
 		.withUser("admin").password("{noop}1234").roles("ADMIN","USER");
 		
 		auth.inMemoryAuthentication()
 		.withUser("user").password("{noop}1234").roles("USER");
-		*/
-		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select username as principal,password as credentiels,active from users where username=?")
+		
+		/*auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select username as principal,password as credentiels,active from users where username=?")
 		.authoritiesByUsernameQuery("select username as principal,roles as role from users_roles where username=?").rolePrefix("ROLE_")
-		.passwordEncoder(passwordEncoder());
+		.passwordEncoder(passwordEncoder());*/
 	}
 	
 	@Override
